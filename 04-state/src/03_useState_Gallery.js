@@ -2,8 +2,13 @@ import React from 'react';
 import { useState } from 'react';
 import { sculptureList } from './data';
 
+/**
+ * 图片轮播控件
+ * @returns 画廊组件
+ */
 export default function Gallery() {
     //必须声明在组件最顶层
+	//当前图片下标
 	const [index, setIndex] = useState(0);
 
 	function handleClick() {

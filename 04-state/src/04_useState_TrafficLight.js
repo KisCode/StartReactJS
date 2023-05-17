@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 /**
  * 交通信号灯组件
+ * 通过useState实现单向数据绑定
  * @returns 交通信号灯组件
  */
 export default function TrafficLight() {

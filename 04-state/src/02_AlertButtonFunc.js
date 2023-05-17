@@ -27,7 +27,7 @@ export default function AlertButtonFunc({message, children}) {
 					alert(message);
 				}}
 			>
-				{children}
+				{children}(阻止事件向上传播)
 			</button>
 		</div>
 	);

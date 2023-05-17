@@ -1,6 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
 
+/**
+ * 文本框输入内容同步更新到<h>标签
+ * 通过state实现单向数据绑定
+ * @returns
+ */
 export default function UserForm() {
 	//必须声明在组件最顶层
 	const [userName, setUserName] = useState('');

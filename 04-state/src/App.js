@@ -15,16 +15,20 @@ import ShoppingCart from './08_useState_demo_shopcar';
 function App() {
 	return (
 		<div>
-			{/* <header className='App-header'>
+			{/* 			<header className='App-header'>
 				<Button />
 				<AlertButton message='开始播放'>播放电影</AlertButton>
 				<AlertButtonFunc message='关闭音乐'>关闭音乐</AlertButtonFunc>
-			</header> */}
+			</header>
+ */}
 
-			{/*       <Gallery/>
+			{/* <Gallery /> */}
+
+			{/*       
       <UserForm/>
-      <TrafficLight/>
        */}
+
+			{/* <TrafficLight /> */}
 
 			{/* 批处理示例 */}
 			{/* <Counter /> */}
@@ -36,8 +40,8 @@ function App() {
 			{/* <ArtList/> */}
 			{/* <ArtListByImmer/> */}
 
-
-			<ShoppingCart/>
+			{/* 购物车Immer的使用 */}
+			<ShoppingCart />
 		</div>
 	);
 }

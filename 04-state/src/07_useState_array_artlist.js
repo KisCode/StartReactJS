@@ -31,14 +31,18 @@ export default function ArtList() {
 		);
 	}
 
-	
+	/**
+	 * 选中处理
+	 * @param {文章id} airticleId
+	 * @param {选中状态} nextSeen
+	 */
 	function handleChangeYourArticle(airticleId, nextSeen) {
 		console.log('handleChangeYourArticle', airticleId, nextSeen);
 
 		setYourArticleList(
 			yourArticleList.map((article) => {
 				if (article.id === airticleId) {
-					//生产一个新的对象
+					//生产一个新的对象 从articel复制一个新对象，并赋值seen
 					return { ...article, seen: nextSeen };
 				} else {
 					return article;

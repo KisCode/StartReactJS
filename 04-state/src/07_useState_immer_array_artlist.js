@@ -9,32 +9,45 @@ let initialList = [
 ];
 
 /**
- * 更新state中的数组
- * 删除、新增
+ * 更新state中的数组  @link 07_useState_array_artlist.js 对比
+ * useImmer的使用 ,简化 useState
  * https://react.docschina.org/learn/updating-arrays-in-state
  * @returns
  */
 export default function ArtListByImmer() {
 	const [myArticleList, setMyArticleList] = useImmer(initialList);
-	const [yourArticleList, setYourArticleList] = useImmer(initialList);
+	const [yourArticleList, setYourArticleList] = useState(initialList);
 
 	function handleChangeMyArticle(airticleId, nextSeen) {
 		console.log('handleChange', airticleId, nextSeen);
 
-		setMyArticleList(draft => {
-			const article = draft.find(article => article.id === airticleId);
+		//useImmer
+		//简化了useState可直接操作article对象
+		setMyArticleList((draft) => {
+			const article = draft.find((article) => article.id === airticleId);
 			article.seen = nextSeen;
-		})
+		});
 	}
 
-	
 	function handleChangeYourArticle(airticleId, nextSeen) {
 		console.log('handleChangeYourArticle', airticleId, nextSeen);
 
-		setYourArticleList(draft => {
+		/* setYourArticleList(draft => {
 			const article = draft.find(article => article.id === airticleId);
 			article.seen = nextSeen;
-		})
+		}) */
+
+		//此处yourArticleList使用useState声明，不能直接对集合元素进行修改
+		setYourArticleList(
+			yourArticleList.map((article) => {
+				if (article.id === airticleId) {
+					//生产一个新的对象 从articel复制一个新对象，并赋值seen
+					return { ...article, seen: nextSeen };
+				} else {
+					return article;
+				}
+			})
+		);
 	}
 
 	return (
