@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>React App</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- 本地库 -->
+		<!-- 引入react核心库 -->
+		<script type="text/javascript" src="js/react.development.js"></script>
+		<!-- 引入react-dom,用于支持react操作DOM -->
+		<script type="text/javascript" src="js/react-dom.development.js"></script>
+		<!-- 引入babel,用于将jsx转为js -->
+		<script type="text/javascript" src="js/babel.min.js"></script>
+
+        <!-- 网络库 -->
+		<!-- 引入react核心库 -->
+		<!-- <script src="https://unpkg.com/react@16/umd/react.development.js"></script> -->
+		<!-- 引入react-dom,用于支持react操作DOM -->
+		<!-- <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> -->
+		<!-- 引入babel,用于将jsx转为js -->
+		<!-- <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script> -->
+	</head>
+	<body>
+		<!-- 准备根容器 -->
+		<div id="root"></div>
+
+		<script type="text/babel">
+			class InputBox extends React.Component {
+				render() {
+					return (
+						<div>
+							<h1>Hello2</h1>
+						</div>
+					);
+				}
+			}
+
+			ReactDOM.render(<InputBox/>, document.getElementById('root'));
+
+			// const elem = React.createElement(
+			// 	'h1',
+			// 	{ className: 'greeting' },
+			// 	'Hello, world!'
+			// );
+			// ReactDOM.render(elem, document.getElementById('root'));
+		</script>
+	</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>02_回调形式的ref</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- 本地库 -->
+		<!-- 引入react核心库 -->
+		<script type="text/javascript" src="js/react.development.js"></script>
+		<!-- 引入react-dom,用于支持react操作DOM -->
+		<script type="text/javascript" src="js/react-dom.development.js"></script>
+		<!-- 引入babel,用于将jsx转为js -->
+		<script type="text/javascript" src="js/babel.min.js"></script>
+	</head>
+	<body>
+		<!-- 准备根容器 -->
+		<div id="root"></div>
+
+   
+		<script type="text/babel">
+            /**
+             * ☆ 
+			 * 回调形式的ref ：ref={(current) => {this.input1 = current}} 将当前Dom元素交给this.input1(组件本身)
+			 * 		1. 匿名函数回调 会在页面更新时回调方法输出两次
+			 * 		2. 类函数回调
+             **/ 
+			class InputBox extends React.Component {
+				state = {isNight:false}
+
+				//更新State状态
+				changeNight = ()=> {
+					//从state 解构出原来的状态值
+					const {isNight} = this.state;
+					this.setState({isNight:!isNight})
+				}
+
+                showData = ()=>{
+					//直接通过 this.input 获取对应 input Dom元素
+                    console.log('this.input1',this.input1)
+                    alert(this.input1.value)
+                }
+				showData2 = ()=>{
+					//直接通过 this.input 获取对应 input Dom元素
+                    console.log('this.input2',this.input2)
+                    alert(this.input2.value)
+                }
+
+				saveInput = (current)=> {
+					this.input2 = current;
+					console.log('input2')
+				}
+
+				render() {
+					const {isNight} = this.state 
+					return (
+						<div>
+							<h1>此时是{isNight?'夜间':'白天'}</h1>
+                            <button onClick={this.changeNight}>切换</button> <br/><br/>
+
+							{/*此处使用匿名函数回调的方式 会在页面更新时回调方法输出两次*/}
+							<input ref={(current) => {this.input1 = current;console.log('input1',current)}} placeholder='请输入'/> &nbsp;
+                            <button onClick={this.showData}>点击按钮可查看文本框内容</button> <br/>
+							
+							{/*此处class函数替代匿名函数,仅在页面初次渲染时调用*/}
+							<input ref={this.saveInput} placeholder='请输入'/> &nbsp;
+                            <button onClick={this.showData2}>点击按钮可查看文本框内容</button> <br/>
+						</div>
+					);
+				}
+			}
+
+			ReactDOM.render(<InputBox/>, document.getElementById('root'));
+		</script>
+	</body>
+</html>

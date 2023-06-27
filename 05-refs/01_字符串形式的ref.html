@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- 本地库 -->
+		<!-- 引入react核心库 -->
+		<script type="text/javascript" src="js/react.development.js"></script>
+		<!-- 引入react-dom,用于支持react操作DOM -->
+		<script type="text/javascript" src="js/react-dom.development.js"></script>
+		<!-- 引入babel,用于将jsx转为js -->
+		<script type="text/javascript" src="js/babel.min.js"></script>
+	</head>
+	<body>
+		<!-- 准备根容器 -->
+		<div id="root"></div>
+
+   
+		<script type="text/babel">
+            /**
+             * ☆ 通过 ref='xxStr' 字符串形式的ref声明，可直接通过 this.refs.xxStr获取Dom元素
+             *  1. 字符串形式的ref声明方式不被官方推荐，后续版本可能移除，不推荐使用
+             * 
+             **/ 
+			class InputBox extends React.Component {
+                showData = ()=>{
+                    console.log('this.refs',this.refs)
+                    console.log('this.refs.input1',this.refs.input1)
+                    console.log('this.refs.input1.value',this.refs.input1.value)
+                    alert(this.refs.input1.value)
+                }
+
+                showData2 = ()=>{
+                    console.log('this.refs',this.refs)
+                    console.log('this.refs.input2',this.refs.input2)
+                    console.log('this.refs.input2.value',this.refs.input2.value)
+                    alert(this.refs.input2.value)
+                }
+
+				render() {
+					return (
+						<div>
+							<input ref='input1' placeholder='请输入'/> &nbsp;
+                            <button onClick={this.showData}>点击按钮可查看文本框内容</button> <br/>
+                            
+							<input ref='input2' onBlur={this.showData2} placeholder='失去焦点时弹框显示文本框内容'/> &nbsp;
+						</div>
+					);
+				}
+			}
+
+			ReactDOM.render(<InputBox/>, document.getElementById('root'));
+		</script>
+	</body>
+</html>
