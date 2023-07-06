@@ -17,11 +17,9 @@ import {
  * @param {传递的状态} state
  * @returns 返回的对象中 key就是作为传递给UI组件props的key,value就是传递给UI组件props的value
  */
-/* const mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
 	return { count: state};
-}; */
-//简化上行函数
-const mapStateToProps = state => ({ count: state });
+};
 
 /**
  * mapDispatchToProps 用于传递操作状态的方法
@@ -51,38 +49,4 @@ const mapDispatchToProps = (dispatch) => {
  * 	1. connect 容器连接指定UI组件，容器组件为UI组件的父组件
  *  2. connect 两个参数mapStateToProps 、mapDispatchToProps 分别用于传递状态和方法给子级UI组件
  */
-// export default connect(mapStateToProps, mapDispatchToProps)(CounterUI);
-
-/* ------------------------------------针对以上代码进行优化------------------------------------ */
-export default connect(
-	//mapStateToProps的简化写法
-	state => ({ count: state }), 
-
-	//mapDispatchToProps的一般写法
-	/* 	
-	dispatch => ({
-		add: (number) => {
-			dispatch(createAddAction(number));
-		},
-		subtract: (number) => {
-			dispatch(createSubtractAction(number));
-		},
-		addIfOdd: (number) => {
-			dispatch(createAddIfOddAction(number));
-		},
-		asycAdd: (number) => {
-			dispatch(createAsycAddAction(number, 500));
-		}
-	})
- 	*/
-
-	//mapDispatchToProps的简化写法，
-	//省略dispatch，返回对象的方式返回action对象，dispatch交由react-redux框架执行
-	{
-		add: createAddAction,
-		subtract: createSubtractAction,
-		addIfOdd: createAddIfOddAction,
-		asycAdd: createAsycAddAction
-	}
-	// mapDispatchToProps
-)(CounterUI);
+export default connect(mapStateToProps, mapDispatchToProps)(CounterUI);

@@ -21,7 +21,7 @@ export default function countReducer(previousState = initState, action) {
 		case SUBTRACT:
 			return previousState - data;
 		case ADDIFODD:
-			return data % 2 !== 0 ? previousState + data : previousState;
+			return previousState + data;
 		case ASYCADD:
 			return previousState + data;
 		default:

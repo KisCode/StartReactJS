@@ -21,16 +21,9 @@ export const createSubtractAction = (data) => {
 };
 
 export const createAddIfOddAction = (data) => {
-	/* 
 	if (data % 2 !== 0) {
 		return { type: ADDIFODD, data };
 	}
-	//如使用react-redux 框架自动分发action,此处必须有返回值，否则报错
-	return { type: '', data }; 
-	*/
-
-	//创建action,后续判断逻辑交由reducer处理
-	return {type: ADDIFODD, data};
 };
 
 /**
